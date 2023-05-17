@@ -9,7 +9,7 @@ var response = {};
 app.get("/", (req, res) => {
   let pageIndex = (req.query.page - 1).toString();
 
-  fetch("https://keen-creponne-60a5ad.netlify.app/videos.json")
+  fetch("https://toonittmedia.netlify.app/videos.json")
     .then((recv) => {
       return recv.json();
     })
