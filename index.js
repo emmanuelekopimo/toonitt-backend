@@ -14,6 +14,7 @@ app.get("/", (req, res) => {
       return recv.json();
     })
     .then((data) => {
+      console.log(data);
       let videos = data.videos; // array
       let indexes = [];
       let videoPages = {};
