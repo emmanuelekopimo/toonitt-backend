@@ -34,12 +34,13 @@ app.get("/", (req, res) => {
           pages: indexes,
           videos: [],
         };
+      } else {
+        response = {
+          type: "PASS",
+          pages: indexes,
+          videos: outVideos,
+        };
       }
-      response = {
-        type: "PASS",
-        pages: indexes,
-        videos: outVideos,
-      };
       res.json(response);
       console.log("Request Handling successfull");
       console.log(response);
