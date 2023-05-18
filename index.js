@@ -28,15 +28,22 @@ app.get("/", (req, res) => {
         }
       });
       response = {
+        type: "PASS",
         pages: indexes,
         videos: videoPages[req.query.page],
       };
       res.json(response);
-      console.log("Request Handled");
+      console.log("Request Handling successfull");
+      console.log(response);
     })
     .catch((err) => {
+      response = {
+        type: "FAIL",
+      };
+      res.json(response);
+      console.log("Request Handling failed");
       console.error(err);
     });
 });
 
-app.listen(3000, () => console.log("Example app is listening on port 3000."));
+app.listen(3000, () => console.log("toonitt-backend is running on port 3000"));
