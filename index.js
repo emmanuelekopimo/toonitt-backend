@@ -14,7 +14,6 @@ app.get("/", (req, res) => {
       return recv.json();
     })
     .then((data) => {
-      console.log(data);
       let videos = data.videos; // array
       let indexes = [];
       let videoPages = {};
@@ -28,10 +27,18 @@ app.get("/", (req, res) => {
           videoPages[videoIndex].push(item);
         }
       });
+      let outVideos = videoPages[req.query.page];
+      if (outVideos === undefined) {
+        response = {
+          type: "INVALID",
+          pages: indexes,
+          videos: [],
+        };
+      }
       response = {
         type: "PASS",
         pages: indexes,
-        videos: videoPages[req.query.page],
+        videos: outVideos,
       };
       res.json(response);
       console.log("Request Handling successfull");
@@ -40,6 +47,8 @@ app.get("/", (req, res) => {
     .catch((err) => {
       response = {
         type: "FAIL",
+        pages: [],
+        videos: [],
       };
       res.json(response);
       console.log("Request Handling failed");
