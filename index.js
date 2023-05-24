@@ -3,7 +3,7 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
-const perPage = 10;
+const perPage = 7;
 var response = {};
 
 app.get("/", (req, res) => {
